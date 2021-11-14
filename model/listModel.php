@@ -15,7 +15,7 @@ class listModel{
     }
 
     function insertTask($id, $task){
-        $query=$this->db->prepare("INSERT INTO tasks (id_folder, tarea) VALUES(?,?)");
+        $query=$this->db->prepare("INSERT INTO tasks (folder_id, tarea) VALUES(?,?)");
         $query->execute(array($id, $task));
         return $query->rowCount();
     }
@@ -27,9 +27,9 @@ class listModel{
         return $task;  
     }
 
-    function editTask($task, $id){
-        $query=$this->db->prepare("UPDATE tasks SET tarea=? WHERE id=?");
-        $query->execute(array($task, $id));
+    function editTask($folder, $task, $id){
+        $query=$this->db->prepare("UPDATE tasks SET tasks.folder_id=?, tasks.tarea=? WHERE tasks.id=?");
+        $query->execute(array($folder, $task, $id));
         return $query->rowCount();
     }
 
@@ -45,4 +45,18 @@ class listModel{
         $folders = $query->fetchAll(PDO::FETCH_OBJ);
         return $folders; 
     }
+
+    function getTasksByIdFolder($id){
+        $query=$this->db->prepare('SELECT * FROM tasks WHERE folder_id=?');
+        $query->execute(array($id));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function deleteFolder($id){
+        $query=$this->db->prepare("DELETE FROM folders WHERE id_folder=?");
+        $query->execute(array($id));
+        return $query->rowCount();
+    }
+
+
 }

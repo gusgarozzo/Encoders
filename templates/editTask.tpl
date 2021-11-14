@@ -17,9 +17,14 @@
           {foreach from=$task item=singletask}
               <input type="hidden" value="{$singletask->id}" name="id">
               <input type="text" value="{$singletask->tarea}" name="task">
-              <input type="submit" class="button" value="Edit">
-              <input type="button" class="button" onclick="history.back()" value="Cancel">
           {/foreach}
+          <select name="folder">
+            {foreach from=$folders item=folder}
+                <option value="{$folder->id_folder}">{$folder->folder}</option>
+            {/foreach}
+            </select>
+            <input type="submit" class="button" value="Edit">
+            <input type="button" class="button" onclick="history.back()" value="Cancel">
         </form>
         
       </div>

@@ -19,10 +19,21 @@ class listView{
         $this->smarty->display('../templates/todolist.tpl');
     }
 
-    function showEditTaskForm($task){
+    function showEditTaskForm($folders, $task){
         $this->smarty->assign("task", $task);
+        $this->smarty->assign("folders", $folders);
         $this->smarty->display('../templates/editTask.tpl');
     }
 
+    function showTasksByFolders($tasks, $folders){
+        $this->smarty->assign("tasks", $tasks);
+        $this->smarty->assign("folders", $folders);
+        $this->smarty->display('../templates/taskByFolders.tpl');
+        
+    }
 
+    function showFolders($folders){
+        $this->smarty->assign("folders", $folders);
+        $this->smarty->display('../templates/folderslist.tpl');
+    }
 }

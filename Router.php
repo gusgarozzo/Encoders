@@ -14,8 +14,12 @@
     $r->addRoute("tasks", "GET", "listController", "getTasks"); // todas las tareas
     $r->addRoute("insertTask", "POST", "listController", "insertTask"); // agrega tarea
     $r->addRoute("editTask/:ID", "GET", "listController", "getTaskID"); // trae tarea para ser editada
-    $r->addRoute("editar", "POST", "listController", "editTasks"); // NO FUNCIONA
+    $r->addRoute("editTask/editar", "POST", "listController", "editTasks"); // edita tarea
     $r->addRoute("delete/:ID", "GET", "listController", "deleteTask"); // elimina tarea
+    $r->addRoute("folders", "GET", "listController", "getFolders"); 
+    $r->addRoute("folders/:ID", "GET", "listController", "getFoldersAndTasks"); 
+    $r->addRoute("folders/folders/:ID", "GET", "listController", "getFoldersAndTasks");
+    $r->addRoute("deleteFolder/:ID", "GET", "listController", "deleteFolder");
 
     //Ruta por defecto.
     $r->setDefaultRoute("listController", "home");

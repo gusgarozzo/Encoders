@@ -29,13 +29,10 @@ class listController{
             $action=$this->listModel->getTaskById($task_id);
 
             if($action){
-                $this->listView->showEditTaskForm($action);
-            }else{
-                //$this->admView->renderError("Hubo un error. Revise y reintente");
+                $folders = $this->listModel->getFolders();
+                $this->listView->showEditTaskForm($folders, $action);
             }
             
-        }else{
-           // $this->admView->renderError("Hubo un error. Reintente");
         }
     }
 
@@ -44,29 +41,25 @@ class listController{
                 $task = $_POST['newTask'];
                 $id = $_POST['id'];
                 $action=$this->listModel->insertTask($id, $task);
-                
+
                 if($action > 0){
                     header("Location:".BASE_URL."tasks");
-                }else{
-                    var_dump("error 1");
                 }
                 
-            }else{
-                var_dump("error 2");
             }
     }
 
     function editTasks(){
-        var_dump("error");die();
-        if(isset($_POST['id']) && ($_POST['task'])){
+        if(isset($_POST['id']) && ($_POST['task']) && ($_POST['folder'])){
             $id = $_POST['id'];
             $task = $_POST['task'];
-            $action = $this->listModel->editTask($task, $id);
+            $folder = $_POST['folder'];
+            $action = $this->listModel->editTask($folder, $task, $id);
 
             if($action > 0){
                 header("Location:".BASE_URL."tasks");
             }
-        }var_dump("error");die();
+        }
     }
 
     function deleteTask($params=null){
@@ -80,6 +73,31 @@ class listController{
         }
     }
 
+    function getFoldersAndTasks($params=null){
+        if(isset($params[':ID'])){
+            $id_folder = $params[':ID'];
+            $action = $this->listModel->getTasksByIdFolder($id_folder);
 
+            if($action>0){
+                $folders = $this->listModel->getFolders();
+                $this->listView->showTasks($action, $folders);
+            }
+        }
+    }
 
+    function getFolders(){
+        $folders = $this->listModel->getFolders();
+        $this->listView->showFolders($folders);
+    }
+
+    function deleteFolder($params=null){
+        if(isset($params[':ID'])){
+            $id = $params[':ID'];
+            $action = $this->listModel->deleteFolder($id);
+
+            if($action > 0){
+                header("Location:".BASE_URL."folders");
+            }
+        }
+    }
 }

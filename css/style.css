@@ -1,18 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root{
+  --fuente: 'Poppins', sans-serif;
+  --color1: #8E49E8;
+  --color2: rgb(142, 73, 232);
+  --color3: #fff;
+}
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--fuente);
 }
+
 ::selection{
-  color: #ffff;
-  background: rgb(142, 73, 232);
+  color: var(--color3);
+  background: var(--color2);
 }
 body{
   width: 100%;
   height: 100vh;
-  /* overflow: hidden; */
   padding: 10px;
   background: linear-gradient(to bottom, #68EACC 0%, #497BE8 100%);
 }
@@ -52,18 +59,18 @@ body{
   transition: all 0.3s ease;
 }
 .inputField input:focus{
-  border-color: #8E49E8;
+  border-color: var(--color1);
 }
 .inputField form .button{
     padding: 5px;
     width: auto;
     height: 100%;
     border: none;
-    color: #fff;
+    color: var(--color3);
     margin-left: 5px;
     font-size: 15px;
     outline: none;
-    background: #8E49E8;
+    background: var(--color1);
     cursor: pointer;
     border-radius: 3px;
     opacity: 0.6;
@@ -107,11 +114,11 @@ body{
 
 .todoList a{
   text-decoration: none;
-  color: #8E49E8;
+  color: var(--color1);
 }
 
 .todoList a:hover{
-  border-bottom: 1px solid #8E49E8;
+  border-bottom: 1px solid var(--color1);
   transition: ease-in .3s;
 }
 
@@ -121,13 +128,25 @@ body{
   background: #e74c3c;
   width: 45px;
   text-align: center;
-  color: #fff;
+  color: var(--color3);
   border-radius: 0 3px 3px 0;
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
 .todoList li:hover .icon{
   right: 0px;
+}
+
+.folders_form{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.folders_form a:hover{
+  text-decoration: underline;
+  border-bottom: none;
 }
 
 .wrapper .footer{
@@ -137,22 +156,24 @@ body{
   align-items: center;
   justify-content: space-between;
 }
+
 .footer button{
   padding: 6px 10px;
   border-radius: 3px;
   border: none;
   outline: none;
-  color: #fff;
+  color: var(--color3);
   font-weight: 400;
   font-size: 16px;
   margin-left: 5px;
-  background: #8E49E8;
+  background: var(--color1);
   cursor: pointer;
   user-select: none;
   opacity: 0.6;
   pointer-events: none;
   transition: all 0.3s ease;
 }
+
 .footer button.active{
   opacity: 1;
   pointer-events: auto;
