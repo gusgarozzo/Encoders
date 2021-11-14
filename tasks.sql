@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-11-2021 a las 16:25:31
+-- Tiempo de generación: 14-11-2021 a las 16:28:00
 -- Versión del servidor: 8.0.27
 -- Versión de PHP: 7.4.25
 
@@ -20,27 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `todolist`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `folders`
---
-
-CREATE TABLE `folders` (
-  `id_folder` int NOT NULL,
-  `folder` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `folders`
---
-
-INSERT INTO `folders` (`id_folder`, `folder`) VALUES
-(3, 'Daily Tasks'),
-(4, 'College'),
-(5, 'Others'),
-(8, 'Work');
 
 -- --------------------------------------------------------
 
@@ -68,12 +47,6 @@ INSERT INTO `tasks` (`id`, `folder_id`, `tarea`) VALUES
 --
 
 --
--- Indices de la tabla `folders`
---
-ALTER TABLE `folders`
-  ADD PRIMARY KEY (`id_folder`);
-
---
 -- Indices de la tabla `tasks`
 --
 ALTER TABLE `tasks`
@@ -83,12 +56,6 @@ ALTER TABLE `tasks`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `folders`
---
-ALTER TABLE `folders`
-  MODIFY `id_folder` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tasks`
