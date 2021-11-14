@@ -1,0 +1,5 @@
+{
+    "require": {
+        "gusgarozzo/Encoders": "1.0.*"
+    }
+}
